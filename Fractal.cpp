@@ -26,8 +26,6 @@ int main()
 			if(iterations!=Mandelbrot::MAX_ITERATIONS)
 				histogram[iterations]++;
 			fractal[y*WIDTH + x] = iterations;
-			uint8_t white = (uint8_t)(256*(double)iterations / Mandelbrot::MAX_ITERATIONS);
-			bitmap.setPixel(x, y, white, white, white);
 			/*if (white < min3)min3 = white;
 			if (white > max3)max3 = white;
 			if (xFractal < min1)min1 = xFractal;
@@ -36,14 +34,24 @@ int main()
 			if (yFractal > max2)max2 = yFractal;*/
 		}
 	}
-	/*int count{ 0 };
+
+	int count{ 0 };
 	cout << endl << endl;
 	for (int i = 0;i < Mandelbrot::MAX_ITERATIONS ; i++)
 	{
-		cout << histogram[i] << " " << flush;
+		//cout << histogram[i] << " " << flush;
 		count += histogram[i];
 	}
-	cout << endl << count << endl;*/
+	cout << endl << count << endl;
+	for (int y = 0; y < HEIGHT; y++)
+	{
+		for (int x = 0; x < WIDTH; x++)
+		{
+			int iterations = fractal[y*WIDTH + x];
+			uint8_t white = (uint8_t)(256 * (double)iterations / Mandelbrot::MAX_ITERATIONS);
+			bitmap.setPixel(x, y, white, white, white);
+		}
+	}
 	
 	/*cout << "x:" << min1 << "," << max1 << endl;
 	cout << "y:" << min2 << "," << max2 << endl;
