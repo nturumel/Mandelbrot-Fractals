@@ -21,5 +21,5 @@ namespace caveofprogramming
     int32_t importantColors{0};//Number of significant colors
   };
 }
-#pragma pack(pop);
+#pragma pack(pop)
 #endif/*BITMAPINFOHEADER_H_*/
